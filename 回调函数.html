@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 3, 5, 7, 9]
+        arr.forEach((item) => { //同步回调函数
+            console.log(item)
+        })
+        console.log('主线程的代码')
+
+        //捕获错误
+        /*
+        try中放可能出现错误的代码，一旦出现错误立即停止try中代码的执行，调用catch，并携带错误信息
+         */
+        try {
+            console.log(1)
+            console.log(a)  // 1
+            console.log(2)
+        } catch (error) {
+            console.log('代码执行出错了', error) //error
+        }
+
+        //抛出一个错误
+        function demo() {
+            const date = Date.now()
+            if (date % 2 == 0) console.log('偶数正常工作')
+            else {
+                throw Error('奇数，不工作')
+            }
+        }
+        demo()
+    </script>
+</body>
+
+</html>

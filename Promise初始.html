@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        1Promise不是回调，是一个内置的构造函数，是new调用的
+        2 new Promise的时候，要传入一个回调函数，它是同步回调，会在主线程上立即执行,它被称为executor函数
+        3每一个Promise实例对象都有初始化（pending)成功(fulfilled)失败(rejected)三种状态
+        4每一个Promise实例在new出来时状态是初始化(pending)
+        5executor函数接受两个参数，它们都是函数，分别用形参resolve,reject接受
+            --------（1）调用resolve，会让Promise实例变为成功(fulfiller)，同时指定成功的value
+            --------（2）调用reject，会让Promise实例变为失败(rejected)，同时指定失败的reason
+        */
+        //创建Promise实例对象 new Promise(executor)
+        const p = new Promise((resolve,reject) => {
+            resolve('ok')
+            reject('reason')
+        })
+        p.then(
+            (value)=>{console.log('成功了',value)}, //成功回调-异步
+            (reason)=>{console.log('失败了'),reason} //失败回调-异步
+        )
+    </script>
+</body>
+</html>

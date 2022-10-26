@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //#region 
+        // const p = new Promise((resolve,reject) => {
+        //     reject('ok')
+        // })
+        // p.then(
+        //     value => console.log('成功了',value)
+        // )
+        // p.catch(
+        //     reason => console.log('失败了',reason)
+        // )
+        
+        // //快速构建一个成功的实例
+        // const p0 = Promise.resolve(100)  
+        // const p1 = Promise.resolve(p0)  
+        // p1.then(
+        //      response => {console.log('成功')},
+        //      error => {console.log('失败')}
+        // ) //成功
+        // //快速构建一个失败的实例
+        // const p2 = Promise.reject(900)  
+        // const p3 = Promise.reject(p2)  
+        // p3.then(
+        //      response => {console.log('成功')},
+        //      error => {console.log('失败')}
+        // ) //失败
+        // //混合使用
+        // const p4 = Promise.reject(10)  
+        // const p5 = Promise.resolve(p4)  
+        // p5.then(
+        //      response => {console.log('成功')},
+        //      error => {console.log('失败')}
+        // ) //失败
+        // const p6 = Promise.resolve('ok')  
+        // const p7 = Promise.reject(p6)  
+        // p7.then(
+        //      response => {console.log('成功')},
+        //      error => {console.log('失败')}
+        // ) //失败
+        //#endregion
+
+        //Promise.all
+        const p1 = Promise.reject(100)
+        const p2 = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve(200)
+            }, 1000);
+        })
+        const p3 = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve(300)
+            }, 2000);
+        })
+        const x = Promise.race([p1,p2,p3])
+        x.then(
+            value => console.log('成功'),
+            err => console.log('失败')
+        ) //失败
+    </script>
+</body>
+</html>
