@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const p = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                reject(100)
+            }, 1000);
+        })
+        async function demo() {
+           try {
+            const result = await p //只能等待一个成功的结果,可以配合try catch使用
+            console.log(1,result)
+           } catch (error) {
+            console.log(2,error)
+           }
+        }
+        demo()
+
+        //测试async
+        // async function test() {
+        //     const a = await 100
+        //     console.log(a) //100
+        // }
+        // test()
+    </script>
+</body>
+</html>
